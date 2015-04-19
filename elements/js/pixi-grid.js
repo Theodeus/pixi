@@ -27,7 +27,7 @@
             this.reset();
         },
         created: function() {
-            this.options = ["pen", "eraser", "sample"];
+            this.options = ["pen", "eraser", "sample", "bucket"];
         },
         down: function(event, detail, sender) {
             this.mousedown = true;
@@ -37,6 +37,12 @@
             });
             if(this.mode === "sample") {
                 console.log(sender.style.background);
+            } else if(this.mode === "bucket") {
+                var pixels = Array.prototype.slice.call(this.shadowRoot.querySelectorAll(".pixel"));
+                console.log(typeof pixels, pixels);
+                pixels.forEach(function(pixel){
+                    this.draw(event, detail, pixel);
+                }, this);
             } else {
                 this.draw(event, detail, sender);
             }
@@ -44,7 +50,7 @@
         draw: function(event, detail, sender) {
             if (this.mousedown) {
                 var pixel = sender;
-                if (this.mode === "pen") {
+                if (this.mode === "pen" || this.mode === "bucket") {
                     pixel.style.backgroundColor = this.selectedColor();
                     if (!pixel.cssRow) {
                         pixel.cssRow = document.createElement("span");
@@ -58,8 +64,6 @@
                         pixel.cssRow.innerHTML = ", " + x + " " + y + " " + this.selectedColor();
                     }
                     this.$.result.appendChild(pixel.cssRow);
-                } else if(this.mode === "bucket") {
-
                 } else {
                     if (pixel.cssRow) {
                         pixel.style.backgroundColor = "rgba(0, 0, 0, 0)";

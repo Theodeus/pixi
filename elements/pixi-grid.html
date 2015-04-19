@@ -38,7 +38,7 @@
             <div id="grid">
                 <template repeat="{{p in pixels}}">
                     <template repeat="{{pixel in p}}">
-                        <span on-mouseover="{{draw}}" on-mousedown="{{down}}" data-x="{{pixel.x}}" data-y="{{pixel.y}}" style="width:{{pixelSize}}px; height:{{pixelSize}}px"/>
+                        <span class="pixel" on-mouseover="{{draw}}" on-mousedown="{{down}}" data-x="{{pixel.x}}" data-y="{{pixel.y}}" style="width:{{pixelSize}}px; height:{{pixelSize}}px"/>
                     </template>
                 </template>
             </div>
