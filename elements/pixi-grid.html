@@ -1,0 +1,71 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="pixi-grid">
+    <template>
+        <link href="css/reset.css" rel="stylesheet" />
+        <link href="css/pixi-grid.css" rel="stylesheet" />
+
+        <div class="container">
+            <div id="picker">
+                <p>red</p>
+                <input type="number" value="{{red}}" max="255" min="0"/>
+                <input type="range" class="color-input" id="r" max="255" min="0" step="1" value="{{red}}"/>
+                <p>green</p>
+                <input type="number" value="{{green}}" max="255" min="0"/>
+                <input type="range" class="color-input" id="g" max="255" min="0" step="1" value="{{green}}"/>
+                <p>blue</p>
+                <input type="number" value="{{blue}}" max="255" min="0"/>
+                <input type="range" class="color-input" id="b" max="255" min="0" step="1" value="{{blue}}"/>
+                <p>alpha</p>
+                <input type="number" value="{{alpha}}" max="1" min="0" step="0.01"/>
+                <input type="range" class="color-input" id="a" max="1" min="0" step="0.01" value="{{alpha}}"/>
+                <div id="selected-color" style="background:rgba({{red}}, {{green}}, {{blue}}, {{alpha}})"></div>
+            </div>
+            <div id="settings">
+                <p>Pixel size</p>
+                <input type="number" value="{{pixelSize}}"  min="1" max="100"/>
+                <input type="range" min="1" max="100" step="1" value="{{pixelSize}}"/>
+                <p>Grid size X</p>
+                <input type="number" value="{{gridSizeX}}"  min="1" max="3000"/>
+                <input type="range" min="1" max="3000" step="1" value="{{gridSizeX}}"/>
+                <p>Grid size Y</p>
+                <input type="number" value="{{gridSizeY}}"  min="1" max="3000"/>
+                <input type="range" min="1" max="3000" step="1" value="{{gridSizeY}}"/>
+                <select value="{{mode}}">
+                    <option template repeat="{{o in options}}" value="{{o}}">{{o}}</option>
+                </select>
+            </div>
+            <div id="grid">
+                <template repeat="{{p in pixels}}">
+                    <template repeat="{{pixel in p}}">
+                        <span on-mouseover="{{draw}}" on-mousedown="{{down}}" data-x="{{pixel.x}}" data-y="{{pixel.y}}" style="width:{{pixelSize}}px; height:{{pixelSize}}px"/>
+                    </template>
+                </template>
+            </div>
+            <div id="css">
+              <h2>Copy this and apply to a div:</h2>
+              
+              <div id="code">
+                <pre>
+.someClass {
+    width: {{gridSizeX * 2}}em;
+    height: {{gridSizeY * 2}}em;
+    font-size: {{pixelSize}}px;
+}
+ 
+.someClass:after {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    left: -1em;
+    top: -1em;
+    box-shadow:</pre> 
+                    <span id="result"></span>}
+
+              </div>
+            </div> 
+        </div>
+    </template>
+    <script src="js/pixi-grid.js"></script>
+</polymer-element>

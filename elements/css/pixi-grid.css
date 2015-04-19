@@ -1,0 +1,66 @@
+body{
+  
+}
+
+.container {
+  font-size: 0; /* This prevents the weird margin when using inline-block */
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#grid {
+  -webkit-user-select: none;
+  user-select: none;
+  margin: 25px;
+  outline: 1px solid #333;
+}
+
+#grid:hover {
+  cursor: crosshair;
+}
+
+span{
+  display:inline-block;
+  outline: 1px solid rgba(50,50,50,0.2);
+}
+
+#result > span {
+  outline: none;
+}
+
+#css {
+  margin:0 0 0  35px;
+  font-size: 16px;
+}
+
+#result {
+  outline:none;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+#code {
+  outline: 1px solid #000;
+  padding: 5px;
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+}
+
+#picker, #settings {
+  width: 130px;
+  padding: 5px;
+}
+
+p {
+  font-size: 14px;
+}
+
+#selected-color {
+  width: 99%;
+  height: 15px;
+  outline: 1px solid #333;
+}
