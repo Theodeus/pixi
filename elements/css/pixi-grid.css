@@ -48,6 +48,8 @@ h2 {
   width: 350px;
   min-width: 350px;
   max-width: 350px;
+  overflow-y: scroll;
+  max-height: 750px;
 }
 
 #picker, #settings {

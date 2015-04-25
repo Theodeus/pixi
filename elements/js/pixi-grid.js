@@ -39,7 +39,6 @@
                 console.log(sender.style.background);
             } else if(this.mode === "bucket") {
                 var pixels = Array.prototype.slice.call(this.shadowRoot.querySelectorAll(".pixel"));
-                console.log(typeof pixels, pixels);
                 pixels.forEach(function(pixel){
                     this.draw(event, detail, pixel);
                 }, this);
@@ -58,12 +57,13 @@
                     var x = (parseInt(pixel.dataset.x, 10) + 1) + "em",
                         y = (parseInt(pixel.dataset.y, 10) + 1) + "em";
 
-                    if (this.$.result.childNodes.length === 0) {
+                    if (this.$.result.childNodes.length === 0 || this.$.result.firstChild === pixel.cssRow) {
                         pixel.cssRow.innerHTML = x + " " + y + " " + this.selectedColor();
+                        this.$.result.insertBefore(pixel.cssRow, this.$.result.firstChild);
                     } else {
                         pixel.cssRow.innerHTML = ", " + x + " " + y + " " + this.selectedColor();
+                        this.$.result.appendChild(pixel.cssRow);
                     }
-                    this.$.result.appendChild(pixel.cssRow);
                 } else {
                     if (pixel.cssRow) {
                         pixel.style.backgroundColor = "rgba(0, 0, 0, 0)";
