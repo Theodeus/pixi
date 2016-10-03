@@ -1,7 +1,7 @@
-/*   
+/*
     Draw pixels in the grid and then copy the generated CSS to create a single div piece of pixel art.
 
-    TODO: 
+    TODO:
     - make pretty
     - add generate button and sort box-shadows (and remove the live updating CSS..)
 */
@@ -14,7 +14,7 @@
         alpha: 1,
         gridSizeX: 24,
         gridSizeY: 12,
-        pixelSize: 30,
+        pixelSize: 15,
         mode: "pen",
         mousedown: false,
         pixelSizeChanged: function() {
@@ -82,7 +82,7 @@
             }
             this.ready();
         },
-        ready: function init() { 
+        ready: function init() {
             this.pixels = [];
             //setup grid container
             this.$.grid.style.width = this.$.grid.style.minWidth = this.$.grid.style.maxWidth = (this.gridSizeX * this.pixelSize + (this.gridSizeX * 2)) + "px";
